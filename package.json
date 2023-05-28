@@ -1,0 +1,81 @@
+{
+  "name": "vite-react-to-webcomponent",
+  "private": true,
+  "type": "module",
+  "version": "0.0.0",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./webcomponents": {
+      "import": "./dist/webcomponents.es.js",
+      "require": "./dist/webcomponents.umd.js",
+      "types": "./dist/webcomponents.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "!src/**/*.test.ts",
+    "!src/**/*.stories.ts"
+  ],
+  "scripts": {
+    "start:cjs": "rollup src/main.js -o bundle/bundle.cjs -f cjs",
+    "start:es": "rollup -c",
+    "start:es:watch": "rollup -c -w",
+    "dynamic:cjs": "rollup src/dynamic_import.js -d dynamic -f cjs",
+    "dynamic:css": "rollup -c rollup_dynamic.config.js",
+    "dev": "vite",
+    "build:wc": "rollup -c rollup_ts.config.js",
+    "prepare": "npm run build",
+    "build": "node ./scripts/build.js",
+    "preview": "vite preview",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@avaya/neo-react": "0.8.7",
+    "react-dom": "^18.2.0",
+    "react-to-webcomponent": "^2.0.0-alpha.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^9.0.2",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "0.0.13",
+    "@svgr/rollup": "^8.0.1",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "@web/rollup-plugin-copy": "^0.4.0",
+    "@web/rollup-plugin-html": "^2.0.0",
+    "babel-loader": "^8.2.5",
+    "postcss": "^8.4.23",
+    "react": "^18.2.0",
+    "rollup": "^3.23.0",
+    "rollup-plugin-css-only": "^4.3.0",
+    "rollup-plugin-external-globals": "^0.8.0",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-scss": "^4.0.0",
+    "rollup-plugin-summary": "^2.0.0",
+    "rollup-plugin-svg": "^2.0.0",
+    "sass": "^1.62.1",
+    "tslib": "^2.5.2",
+    "typescript": "^4.9.5",
+    "vite": "^3.1.0",
+    "vite-plugin-css-injected-by-js": "^2.1.1"
+  }
+}
